@@ -1,7 +1,8 @@
-def AACC(n: int):
+def print_number (n: int):
+    ''' This function prints a number pattern  '''
     for f in range(n, 0, -1):
         for x in range(f,0,-1):
            print(x, end=" ")
         print()
           
-AACC(5)
+print_number()
