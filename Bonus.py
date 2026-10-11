@@ -13,7 +13,7 @@ def count_misplaced(secret: str, guess: str) -> int:
     """Count digits that are correct but in the wrong position."""
     temp = list(secret)
 
-    # أولاً: نحذف الـ EXACT
+    
     for i in range(4):
         if guess[i] == secret[i]:
             temp[i] = None
