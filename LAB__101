@@ -1,0 +1,7 @@
+def AACC(n: int):
+    for f in range(n, 0, -1):
+        for x in range(f,0,-1):
+           print(x, end=" ")
+        print()
+          
+AACC(5)
