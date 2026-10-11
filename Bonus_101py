@@ -1,0 +1,57 @@
+def exact_count(code, guess):
+    """ Find matching digits """
+    exact = 0
+    for i in range(4):
+        if code [i] == guess[i]:
+            exact = exact + 1
+    return exact
+
+
+def wrong_pos(code, guess):
+    """ Find misplaced digits """
+    secret_left = []
+    guess_left = []
+    for i in range(4):
+        if code[i] != guess[i]:
+            secret_left.append(code[i])
+            guess_left.append(guess[i])
+
+    misplaced = 0
+    for digit in guess_left:
+        if digit in secret_left:
+            misplaced = misplaced + 1
+            secret_left.remove(digit)
+    return misplaced
+
+
+def game():
+    """ Start the vault challenge """
+    code = "4271"
+    tries = 6
+
+    print(" The vault is locked 👽")
+    print("You have 6 attempts to crack the code! 🔐")
+
+    for attempt in range(tries):
+        guess = input("Enter your 4-digit guess: ")
+
+        if len(guess) !=4:
+            print("Please enter exactly 4 digits!")
+            continue
+
+        exact = exact_count(code, guess)
+        misplaced = wrong_pos(code, guess)
+        print("EXACT:", exact , "MISPLACED:", misplaced)
+    
+        if exact == 4:
+            print(f"You cracked the vault in {attempt + 1} attempts!😎")
+            return
+        remaining = tries - (attempt + 1)
+        print(f"You have {remaining} attempts remaining. ⚠️")
+        
+    print(" All attempts are over! The vault remains locked 🚨")
+    
+        
+
+
+game()
